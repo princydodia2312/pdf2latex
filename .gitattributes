@@ -1,0 +1,18 @@
+# Normalize line endings to LF in the repo, regardless of OS.
+# Windows checkouts will still use CRLF locally (core.autocrlf handles that),
+# but the repo itself stays consistent.
+
+* text=auto eol=lf
+
+# Python source files — always LF
+*.py text eol=lf
+
+# Markdown and text files — always LF
+*.md text eol=lf
+*.txt text eol=lf
+
+# Binary files — no line ending conversion
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
