@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pdf2TeX — PDF to LaTeX Converter</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>pdf2<span>TeX</span></h1>
+    <p>Convert born-digital PDFs to valid LaTeX — preserving bold, italic, alignment, and links.</p>
+  </header>
+
+  <main class="card">
+
+    <!-- ── Upload zone ── -->
+    <div id="drop-zone" role="button" tabindex="0"
+         aria-label="Upload PDF — click or drag and drop">
+      <span class="icon" aria-hidden="true">📄</span>
+      <strong>Drop a PDF here, or click to browse</strong>
+      <p>Born-digital PDFs only &nbsp;·&nbsp; v0 supports any document type</p>
+      <input type="file" id="file-input" accept=".pdf" aria-hidden="true" />
+    </div>
+
+    <!-- selected file name -->
+    <p id="file-label" style="margin-top:.6rem;font-size:.85rem;color:var(--muted);min-height:1.2em;"></p>
+
+    <!-- upload button -->
+    <button class="btn" id="upload-btn" disabled style="margin-top:.5rem;">
+      ⚡ Convert to LaTeX
+    </button>
+
+    <!-- status spinner -->
+    <div id="status-bar" role="status" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <span id="status-msg">Processing …</span>
+    </div>
+
+    <!-- error banner -->
+    <div id="error-alert" class="alert alert-error" role="alert" aria-live="assertive"></div>
+
+    <!-- ── Result section ── -->
+    <section id="result-section" aria-label="Conversion result">
+      <hr class="divider" />
+
+      <div class="result-header">
+        <h2>✅ Conversion complete</h2>
+        <span class="meta" id="line-count"></span>
+      </div>
+
+      <pre id="tex-preview" aria-label="Generated LaTeX source"></pre>
+
+      <div class="actions">
+        <a id="download-btn" class="btn" href="#" download>
+          ⬇ Download .tex
+        </a>
+        <button class="btn btn-outline" id="convert-again">
+          ↩ Convert another file
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      pdf2TeX v0 &nbsp;·&nbsp;
+      <a href="https://github.com/princydodia2312/pdf2latex" target="_blank"
+         rel="noopener noreferrer">GitHub</a>
+      &nbsp;·&nbsp;
+      Style-based heuristics, no ML
+    </p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

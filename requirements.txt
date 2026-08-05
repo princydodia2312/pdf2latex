@@ -11,5 +11,10 @@ pymupdf==1.24.9
 # CLI argument parsing
 click==8.1.7
 
+# Web UI
+fastapi==0.111.1
+uvicorn==0.30.3
+python-multipart==0.0.9
+
 # Testing
 pytest==8.3.2

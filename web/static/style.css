@@ -1,0 +1,217 @@
+/* pdf2TeX — web UI styles */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #f7f7f8;
+  --surface:     #ffffff;
+  --border:      #e2e2e5;
+  --accent:      #4f46e5;
+  --accent-dark: #3730a3;
+  --accent-bg:   #eef2ff;
+  --text:        #18181b;
+  --muted:       #71717a;
+  --error-bg:    #fef2f2;
+  --error-text:  #991b1b;
+  --success-bg:  #f0fdf4;
+  --success-text:#166534;
+  --radius:      10px;
+  --shadow:      0 1px 4px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ---------- header ---------- */
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+header h1 span { color: var(--accent); }
+
+header p {
+  margin-top: .4rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* ---------- main card ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 740px;
+  padding: 2rem;
+}
+
+/* ---------- upload zone ---------- */
+#drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+
+#drop-zone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+#drop-zone .icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: .75rem;
+}
+
+#drop-zone p { color: var(--muted); font-size: .9rem; margin-top: .3rem; }
+
+#drop-zone strong { color: var(--text); }
+
+#file-input { display: none; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: .55rem 1.2rem;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s;
+  text-decoration: none;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn:disabled { background: #a5b4fc; cursor: not-allowed; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+.btn-outline:hover { background: var(--accent-bg); }
+
+/* ---------- status bar ---------- */
+#status-bar {
+  margin-top: 1.25rem;
+  display: none;
+  align-items: center;
+  gap: .75rem;
+  font-size: .9rem;
+}
+
+#status-bar.visible { display: flex; }
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2.5px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- alert banners ---------- */
+.alert {
+  margin-top: 1.25rem;
+  padding: .85rem 1rem;
+  border-radius: 7px;
+  font-size: .9rem;
+  display: none;
+}
+.alert.visible { display: block; }
+.alert-error   { background: var(--error-bg);   color: var(--error-text); }
+.alert-success { background: var(--success-bg); color: var(--success-text); }
+
+/* ---------- result section ---------- */
+#result-section {
+  margin-top: 1.5rem;
+  display: none;
+}
+#result-section.visible { display: block; }
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.result-header h2 { font-size: 1rem; font-weight: 600; }
+
+.meta { font-size: .8rem; color: var(--muted); }
+
+/* ---------- tex preview ---------- */
+#tex-preview {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: "Fira Code", "Cascadia Code", "Consolas", monospace;
+  font-size: .78rem;
+  line-height: 1.6;
+  border-radius: 7px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 420px;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* simple LaTeX syntax highlight classes */
+.kw  { color: #89b4fa; }   /* commands  \section \textbf etc */
+.env { color: #a6e3a1; }   /* environments begin/end */
+.arg { color: #f9e2af; }   /* arguments in {} */
+.com { color: #6c7086; font-style: italic; } /* % comments */
+
+/* ---------- actions row ---------- */
+.actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* ---------- divider ---------- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ---------- footer ---------- */
+footer {
+  margin-top: 2rem;
+  font-size: .8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
