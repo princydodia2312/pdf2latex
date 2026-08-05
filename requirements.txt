@@ -1,5 +1,9 @@
 # pdf2TeX v0 dependencies
 # Pin exact versions to ensure reproducible installs.
+#
+# Python version: 3.10 – 3.12 recommended.
+# pymupdf 1.24.x does not yet ship prebuilt wheels for Python 3.13+.
+# If you are on Python 3.13+, use: pip install pymupdf --pre
 
 # PDF parsing — text, style metadata, links, bounding boxes
 pymupdf==1.24.9
