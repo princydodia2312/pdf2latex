@@ -1,0 +1,11 @@
+# pdf2TeX v0 dependencies
+# Pin exact versions to ensure reproducible installs.
+
+# PDF parsing — text, style metadata, links, bounding boxes
+pymupdf==1.24.9
+
+# CLI argument parsing
+click==8.1.7
+
+# Testing
+pytest==8.3.2
